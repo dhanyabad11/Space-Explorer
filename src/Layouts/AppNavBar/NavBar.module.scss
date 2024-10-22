@@ -1,0 +1,431 @@
+@mixin nav-buttons {
+    width: 165px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: white;
+    padding: 5px 5px;
+    box-shadow: 0px 0px 6px 0px var(--card-text-collor-button-1);
+    transition: all 150ms ease-in-out;
+}
+
+@mixin nav-buttons-hover {
+    cursor: url("/pointer.png"), auto;
+    color: var(--card-box-shadow-color-hover);
+    box-shadow: 0px 0px 7px 1px #1e4d94, 0px 0px 12px 3px #a7a6a6;
+    text-shadow: 0px 0px 20px #000000;
+}
+
+@mixin nav-button-active {
+    transition: all 150ms ease-in-out;
+}
+
+@mixin main-nav {
+    .secondary-nav-container {
+        width: 100%;
+        height: 80px;
+        position: relative;
+        max-width: 1322px;
+        max-height: 91px;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        background-color: var(--component-bgr-transparent-color);
+        padding: 0.8rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
+        transition: all 150ms ease-in-out;
+        transform: translateY(0%);
+
+        .nav-links {
+            width: 815px;
+            height: 52px;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            justify-content: flex-start;
+
+            .nav-link-item {
+                width: 43px;
+
+                a {
+                    font-size: 1.5rem;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 150ms ease-in-out;
+                }
+
+                .active {
+                    font-size: 1.5rem;
+                    color: var(--nav-btn-active-main-clr);
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 150ms ease-in-out;
+
+                    &:hover {
+                        @include nav-buttons-hover();
+                    }
+                    &:active {
+                        @include nav-button-active();
+                    }
+                }
+
+                .pending {
+                    font-size: 1.5rem;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 150ms ease-in-out;
+                    &:hover {
+                        @include nav-buttons-hover();
+                    }
+                    &:active {
+                        @include nav-button-active();
+                    }
+                }
+            }
+        }
+
+        .nav-navbar-collapse {
+            display: flex;
+            gap: 0.7rem;
+            align-items: center;
+            width: 32%;
+            height: 52px;
+            justify-content: space-evenly;
+
+            .nav-item-nasa {
+                background-color: transparent;
+                border: none;
+                border-radius: 10px;
+                text-decoration: none;
+                color: white;
+                font-size: 1.1rem;
+                padding: 5px 7px;
+                transition: all 150ms ease-in-out;
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+
+            .nav-item-pod {
+                @include nav-buttons;
+                border-radius: 5px;
+                padding: 4px 4px;
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+        }
+
+        .nav-toggler-contaier {
+            display: none;
+
+            svg {
+                font-size: 2.4rem;
+                width: 38px;
+                z-index: 0;
+                line-height: 1;
+                height: 30px;
+            }
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: var(--card-box-shadow-color-hover);
+                text-shadow: var(--hero-text-shadow-additional);
+            }
+            &:active {
+                @include nav-button-active();
+                background-color: transparent;
+            }
+        }
+    }
+}
+.hiding-nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 80px;
+    z-index: 600;
+    transition: all 200ms ease-in-out;
+
+    .main-nav-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: 600;
+        justify-content: center;
+        @include main-nav();
+    }
+}
+
+.nav-logo-container {
+    height: 80px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+    .nav-logo-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include nav-buttons();
+        width: 195px;
+        height: 80px;
+        &:hover {
+            @include nav-buttons-hover();
+        }
+        &:active {
+            @include nav-button-active();
+        }
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        object-fit: contain;
+        margin-right: 6px;
+        z-index: -1;
+        transition: all 150ms ease-in-out;
+    }
+}
+
+.nav-logo-container:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--component-bgr-transparent-color);
+    z-index: -1;
+}
+
+.secondary-nav-container:hover {
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+}
+/*DESKTOP NAV SHOULD BE ALWAYS VISIBLE*/
+@media screen and (min-width: 1534px) {
+    .main-nav-container {
+        @include main-nav();
+        .secondary-nav-container {
+            transform: translateY(0%) !important;
+        }
+    }
+}
+/*TABLET-LAPTOP*/
+@media screen and (min-width: 767px) and (max-width: 1533px) {
+    .main-nav-container {
+        @include main-nav();
+        .secondary-nav-container {
+            transform: translateY(0%) !important;
+        }
+        .nav-logo-container {
+            display: none;
+        }
+    }
+}
+/*Mobile*/
+@media screen and (max-width: 767px) {
+    @mixin res-nav {
+        height: 170px;
+        max-width: unset;
+        max-height: 170px;
+        display: flex;
+        gap: 0.8rem;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0.8rem;
+        border-radius: unset;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
+        transition: all 150ms ease-in-out;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
+        position: fixed;
+        top: 0;
+        flex-direction: column;
+        align-content: space-around;
+
+        .nav-links {
+            height: unset;
+            width: unset;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex-direction: row;
+
+            .nav-link-item {
+                width: unset;
+
+                a {
+                    font-size: 1rem;
+                }
+
+                .active {
+                    font-size: 1rem;
+                    color: var(--nav-btn-active-main-clr);
+                    text-decoration: none;
+                    border: none;
+                    border-radius: unset;
+                    padding: unset;
+                    transition: all 150ms ease-in-out;
+                    cursor: url("/pointer.png"), auto;
+                }
+
+                .pending {
+                    font-size: 1rem;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: unset;
+                    padding: unset;
+                    transition: all 150ms ease-in-out;
+                }
+            }
+        }
+
+        .nav-navbar-collapse {
+            width: 100%;
+            height: unset;
+            justify-content: unset;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-self: flex-start;
+            align-items: center;
+
+            .nav-item-nasa {
+                width: 165px;
+                text-align: center;
+                background-color: transparent;
+                border: none;
+                border-radius: 10px;
+                font-size: 1rem;
+                text-decoration: none;
+                color: #fff;
+                padding: 5px 5px;
+                box-shadow: 0px 0px 7px 1px var(--box-shadow-color), 0px 0px 12px 3px var(--box-shadow-color);
+                transition: all 150ms ease-in-out;
+
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+
+            .nav-item-pod {
+                @include nav-buttons;
+                border-radius: 5px;
+                padding: 4px 4px;
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+        }
+        .nav-toggler-contaier {
+            display: flex;
+            align-self: flex-start;
+            position: fixed;
+            top: 170px;
+            left: 0;
+            background: #132f5b;
+            width: 100%;
+            justify-content: center;
+            box-shadow: 0px 1px 0px 0px var(--card-box-shadow-collor-button);
+            &:active {
+                background: #305fac;
+                svg {
+                    color: #4990be;
+                }
+            }
+        }
+    }
+    .hiding-nav {
+        transform: none !important;
+        .main-nav-container {
+            display: block;
+            flex-wrap: unset;
+            align-items: unset;
+            gap: unset;
+            justify-content: unset;
+            position: relative;
+
+            .nav-logo-container {
+                display: none;
+            }
+            .secondary-nav-container {
+                transform: translate(0%);
+                @include res-nav();
+                .nav-links {
+                    height: unset;
+                    width: unset;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+
+                    .nav-link-item {
+                        width: unset;
+
+                        a {
+                            font-size: 1rem;
+                        }
+
+                        .active {
+                            font-size: 1rem;
+                            text-decoration: none;
+                            border: none;
+                            border-radius: unset;
+                            padding: unset;
+                            transition: all 150ms ease-in-out;
+                            &:hover {
+                                box-shadow: unset;
+                                text-shadow: unset;
+                            }
+                        }
+
+                        .pending {
+                            font-size: 1rem;
+                            color: #ffffff;
+                            text-decoration: none;
+                            border: none;
+                            border-radius: unset;
+                            padding: unset;
+                            transition: all 150ms ease-in-out;
+                            &:hover {
+                                box-shadow: unset;
+                                text-shadow: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

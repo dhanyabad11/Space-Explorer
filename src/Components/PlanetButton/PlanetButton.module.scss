@@ -1,0 +1,53 @@
+.planet-image-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+
+    .planet-image-name {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .planet-image-name-mobile {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .planet-image-button {
+        width: 250px;
+        height: 250px;
+        border: none;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        transition: all 250ms ease-in-out;
+        filter: brightness(0.5);
+
+        .planet-image {
+            height: 333px;
+            object-fit: cover;
+            position: absolute;
+            top: -44px;
+            left: 0px;
+            border-radius: 50%;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+            }
+        }
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+            box-shadow: 0px 0px 20px var(--card-box-shadow-color);
+            transform: translate3d(-10px, -10px, 30px);
+            filter: brightness(1);
+        }
+        &:focus-within,
+        &:focus-visible {
+            transform: translate3d(-10px, -10px, 30px);
+            box-shadow: 0px 0px 20px var(--card-box-shadow-color);
+            filter: brightness(1);
+        }
+    }
+}

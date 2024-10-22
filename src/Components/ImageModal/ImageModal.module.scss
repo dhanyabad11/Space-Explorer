@@ -1,0 +1,314 @@
+@mixin button {
+    width: clamp(90px, 100px, 175px);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 5px;
+    font-weight: 600;
+    box-shadow:
+        0px 0px 0px 1px #1e4d94,
+        0px 0px 7px 3px #1e4d94;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+        cursor: url(/pointer.png), auto;
+        color: var(--card-box-shadow-color-hover);
+        box-shadow:
+            0px 0px 7px 1px #1e4d94,
+            0px 0px 12px 3px #a7a6a6;
+        text-shadow: 0px 0px 20px #000000;
+        backdrop-filter: blur(5px);
+    }
+    &:active {
+        background: var(--btn-active-bgr);
+    }
+
+    &:disabled {
+        color: #000;
+        &:active {
+            background-color: black;
+        }
+    }
+}
+
+.modal-image-container-expanded {
+    position: absolute;
+    display: flex;
+    inset: 0;
+    margin: auto;
+    z-index: 1;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 999;
+    &:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        margin: auto;
+        position: absolute;
+        background-color: #000;
+        z-index: -1;
+    }
+
+    .modal-image-and-title-container {
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        transition: 200ms transofrm ease-in-out;
+
+        .image-loading-text {
+            color: #ffffff;
+            letter-spacing: 2mm;
+            text-shadow: var(--text-color-shadow);
+            font-size: 2rem;
+            animation: infinite;
+            animation-name: text-color;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            text-align: center;
+        }
+        .image-link {
+            width: min(100%, 1200px);
+            height: 100%;
+            max-height: 500px;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+            }
+
+            .image-loaded {
+                object-fit: contain;
+                width: min(100%, 1200px);
+                height: 633px;
+                max-width: 1200px;
+                max-height: 633px;
+                border: 1px solid var(--card-box-shadow-collor-button);
+                border-radius: 10px;
+                animation: expand 200ms forwards ease-in;
+                -webkit-animation: expand 200ms forwards ease-in;
+            }
+        }
+
+        .modal-image-title {
+            font-size: 1.7rem;
+            color: var(--card-text-collor-button);
+            letter-spacing: 0.02mm;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 80%;
+            text-align: center;
+            max-height: 100px;
+            overflow-y: scroll;
+        }
+
+        .modal-navigation-container {
+            display: flex;
+            width: clamp(220px, 100%, 500px);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 1.3rem;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid var(--card-box-shadow-collor-button-hover);
+            border-radius: 10px;
+            box-shadow:
+                -20px 20px 80px 0px #00043b,
+                20px 20px 80px #000449;
+            p {
+                font-size: 1.4rem;
+                color: var(--about-link-collor-hover);
+            }
+
+            .modal-buttons-container {
+                display: flex;
+                gap: 1.2rem;
+                position: relative;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                align-items: center;
+
+                button {
+                    @include button();
+                }
+                .span-link,
+                .span-close-x {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    padding: 0.2rem;
+                    font-size: 1.5rem;
+                    width: 36px;
+                    height: 36px;
+                    text-align: center;
+                    color: #fff;
+                    background-color: var(--component-bgr-transparent-color);
+                    border-radius: 10px;
+                    box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
+                    z-index: 501;
+                    cursor: url("/pointer.png"), auto;
+                    &:hover {
+                        color: #8d0101;
+                        cursor: url("/pointer.png"), auto;
+                        box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
+                    }
+                    &:active {
+                        color: #fff;
+                        background: var(--btn-active-bgr);
+                    }
+                }
+                .card-button {
+                    position: relative;
+                    display: flex;
+                    width: 36px;
+                    height: 36px;
+                    padding: 0.4rem;
+                    background: transparent;
+                    border-radius: 8px;
+                    border: none;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                    transition: all 200ms ease-in-out;
+                    &:hover {
+                        cursor: url("/pointer.png"), auto;
+                        background: #498fbe5b;
+                    }
+                    &:active {
+                        cursor: url("/pointer.png"), auto;
+                        cursor: url(/pointer.png), auto;
+                        box-shadow: inset 0px 0px 20px 0px #ffffff;
+                    }
+                    .share-copied {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 50%;
+                        left: 115%;
+                        width: 65px;
+                        height: 30px;
+                        color: #fff;
+                        background-color: var(--card-box-shadow-collor-button-hover);
+                        padding: 0.1rem;
+                        border-radius: 0.3rem;
+                        animation: copy 300ms;
+                        -webkit-animation: copy 300ms;
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes expand {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .modal-image-container-expanded {
+        height: clamp(750px, 100%, 800px);
+        padding: 0 1rem;
+        left: 0;
+        top: 0;
+        .modal-image-and-title-container {
+            .modal-image-title {
+                font-size: 1rem;
+                max-width: 100%;
+                max-height: 70px;
+                overflow-y: scroll;
+            }
+            .modal-navigation-container {
+                .modal-buttons-container {
+                    display: flex;
+                    gap: 1.2rem;
+                    position: relative;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    button {
+                        font-size: 1rem;
+                    }
+                    &:hover {
+                        color: unset;
+                        box-shadow: unset;
+                        text-shadow: unset;
+                        backdrop-filter: blur(5px);
+                    }
+                    &:active {
+                        background-color: unset;
+                        box-shadow: unset;
+                    }
+                    .span-link,
+                    .span-close-image {
+                        font-size: 1.5rem;
+                        color: #1b3da7;
+                        background-color: rgba(0, 0, 0, 0);
+                        transition: backrgound-color 50ms ease-in-out;
+                        &:active {
+                            background-color: var(--component-bgr-transparent-color);
+                        }
+                    }
+                    .card-button {
+                        position: relative;
+                        display: flex;
+                        width: 36px;
+                        height: 36px;
+                        padding: 0.4rem;
+                        background: transparent;
+                        border-radius: 8px;
+                        border: none;
+                        justify-content: center;
+                        align-items: center;
+                        box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                        transition: all 200ms ease-in-out;
+                        &:hover {
+                            cursor: url("/pointer.png"), auto;
+                            background: #498fbe5b;
+                        }
+                        &:active {
+                            cursor: url("/pointer.png"), auto;
+                            cursor: url(/pointer.png), auto;
+                            box-shadow: inset 0px 0px 20px 0px #ffffff;
+                        }
+                        .share-copied {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            top: 50%;
+                            left: 115%;
+                            width: 65px;
+                            height: 30px;
+                            color: #fff;
+                            background-color: var(--card-box-shadow-collor-button-hover);
+                            padding: 0.1rem;
+                            border-radius: 0.3rem;
+                            animation: copy 300ms;
+                            -webkit-animation: copy 300ms;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

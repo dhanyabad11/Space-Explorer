@@ -1,0 +1,89 @@
+@mixin link-general-styles {
+    color: var(--about-link-collor-hover);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    transition: all ease-in-out 200ms;
+    &:hover {
+        cursor: url("/pointer.png"), auto;
+        text-shadow: 0px 0px 20px var(--text-color-shadow);
+    }
+}
+
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+    }
+
+    .overlay {
+        text-align: center;
+        color: #fff;
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+        background-color: var(--component-bgr-transparent-color);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        align-content: center;
+        flex-direction: column;
+        justify-content: center;
+
+        .inner-container {
+            width: 100%;
+            position: absolute;
+            top: 15rem;
+            padding: 5px 10px;
+            background-color: var(--component-bgr-transparent-color);
+            display: flex;
+            gap: 0.4rem;
+            flex-direction: column;
+            transition: ease-in-out 200ms;
+
+            .title-mobile {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+
+            .title-desktop {
+                font-size: 2.3rem;
+                letter-spacing: 2px;
+            }
+
+            .text-mobile {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+            .text-desktop {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .link-mobile {
+                font-size: 1.2rem;
+                @include link-general-styles();
+            }
+            .link-desktop {
+                font-size: 1.8rem;
+                @include link-general-styles();
+            }
+
+        }
+    }
+}

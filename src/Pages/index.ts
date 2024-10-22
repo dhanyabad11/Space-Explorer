@@ -1,0 +1,6 @@
+export * from "./AboutPage/AboutPage"
+export * from "./ArticlesPage/ArticlesPage"
+export * from "./PlanetsPage/PlanetsPage"
+export * from "./HomePage/HomePage"
+export * from "./ImagePage/ImagePage"
+export * from "./PoDPage/index"

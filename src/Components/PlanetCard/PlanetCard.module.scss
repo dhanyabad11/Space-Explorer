@@ -1,0 +1,97 @@
+.planet-main-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    width: clamp(320px, 100%, 900px);
+    display: flex;
+    background: var(--component-bgr-transparent-color2);
+    z-index: 100;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-radius: 10px;
+    padding: 5px;
+
+    .planet-loading-text {
+        font-size: 1.5rem;
+        text-align: center;
+        color: var(--emphasized-text-about);
+    }
+    @mixin planet-close-modal {
+        background-color: transparent;
+        display: flex;
+        border: 1px solid var(--box-shadow-color);
+        border-radius: 10px;
+        font-size: 1.2rem;
+        padding: 5px 10px;
+        transition: all ease-in-out 200ms;
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+            background-color: var(--card-box-shadow-color);
+        }
+        &:active {
+            color: var(--about-text-collor);
+            background-color: #fff;
+        }
+        &:not(:active) {
+            color: #fff;
+        }
+    }
+
+    .planet-close-modal {
+        @include planet-close-modal();
+    }
+
+    .planet-close-modal-mobile {
+        @include planet-close-modal();
+        padding: 2.5px 5px;
+    }
+    .planet-data-section-title-name {
+        font-size: 1.8rem;
+        color: var(--text-color-shadow);
+    }
+    .planet-data-section-title-name-mobile {
+        font-size: 1.2rem;
+        color: var(--text-color-shadow);
+    }
+    .planet-image-container {
+        width: 80%;
+        .planet-image {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .planet-data-container {
+        display: flex;
+        flex-direction: column;
+        .planted-data-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .planet-data-section-title {
+                font-size: 1.4rem;
+                color: var(--about-text-collor);
+            }
+            .planet-information {
+                font-size: 1rem;
+            }
+        }
+    }
+    .planet-data-container-mobile {
+        display: flex;
+        flex-direction: column;
+        .planted-data-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .planet-data-section-title {
+                font-size: 1.2rem;
+                color: var(--about-text-collor);
+            }
+            .planet-information {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

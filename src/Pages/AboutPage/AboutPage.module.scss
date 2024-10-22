@@ -1,0 +1,247 @@
+@mixin container-text-content {
+    h2 {
+        color: var(--card-box-shadow-color-hover);
+        font-size: 1.6rem;
+    }
+    p {
+        font-size: 1.33rem;
+        width: 45%;
+        text-align: center;
+        color: var(--about-text-collor);
+        letter-spacing: 0.2mm;
+
+        a {
+            color: var(--about-link-collor);
+            transition: all 200ms ease-in-out;
+            text-decoration: underline;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: var(--about-link-collor-hover);
+                text-shadow: 0px 0px 0px var(--text-color-shadow);
+            }
+        }
+    }
+    .emph-text {
+        color: var(--emphasized-text-about);
+        font-size: 1.33rem;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+@mixin nav-buttons-hover {
+    cursor: url("/pointer.png"), auto;
+    color: var(--card-box-shadow-color-hover);
+    box-shadow:
+        0px 0px 7px 1px var(--box-shadow-color),
+        0px 0px 12px 3px var(--box-shadow-color-secondary);
+    text-shadow: 0px 0px 20px #000000;
+}
+
+@mixin nav-button-active {
+    transition: all 150ms ease-in-out;
+    background-color: rgba($color: #797979, $alpha: 0.35);
+}
+
+.about-container {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    justify-content: center;
+    margin-top: 100px;
+
+    .span-trigger {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+    }
+
+    .slide-in {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        height: clamp(450px, 500px, 550px);
+        animation: slide-in 1s forwards;
+        -webkit-animation: slide-in 1s forwards;
+        background-color: var(--component-bgr-transparent-color);
+        flex-wrap: wrap;
+        align-content: flex-end;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        padding: 0 1rem;
+        box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+        @include container-text-content();
+    }
+    .img-container {
+        position: absolute;
+        height: 500px;
+        width: 50%;
+        top: 0;
+        left: 0;
+
+        .slide-in-img {
+            height: 100%;
+            animation: slide-in-img 1s forwards;
+            -webkit-animation: slide-in-img 1s forwards;
+            object-fit: cover;
+            filter: brightness(0.3);
+        }
+    }
+    .about-links-container {
+        display: flex;
+        gap: 1rem;
+        min-width: 210px;
+        align-items: center;
+        a {
+            display: flex;
+            height: fit-content;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: var(--card-box-shadow-color-hover);
+            }
+            svg {
+                &:hover {
+                    cursor: url("/pointer.png"), auto;
+                    color: var(--card-box-shadow-color-hover);
+                }
+            }
+        }
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slide-in {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: translateX(0%) translateY(1px);
+        opacity: 1;
+    }
+}
+
+// SLIDE IN IMAGE ANIMATION
+@keyframes slide-in-img {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slide-in-img {
+    0% {
+        -webkit-transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: translateX(0%) translateY(1px);
+        opacity: 1;
+    }
+}
+
+@mixin responsive-text {
+    h2 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1rem;
+        width: unset;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+    .emph-text {
+        font-size: 1.2rem;
+        width: unset;
+    }
+    .nav-item-nasa {
+        background-color: transparent;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 5px 7px;
+        transition: all 150ms ease-in-out;
+        text-decoration: underline;
+        &:hover {
+            @include nav-buttons-hover();
+        }
+        &:active {
+            @include nav-button-active();
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-container {
+        position: unset;
+        justify-content: unset;
+        width: 100%;
+        padding: unset;
+        margin-top: unset;
+        position: relative;
+        height: 530px;
+        margin-top: 200px;
+
+        .slide-in {
+            padding: 0 1rem;
+            margin-top: unset;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 2;
+            @include responsive-text();
+        }
+        .img-container {
+            position: absolute;
+            width: 100%;
+            height: clamp(450px, 500px, 550px);
+            top: 0;
+            left: 0;
+            z-index: 0;
+
+            .slide-in-img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                object-fit: cover;
+                animation: slide-in-img 1s forwards;
+                -webkit-animation: slide-in-img 1s forwards;
+                filter: none;
+            }
+        }
+    }
+}

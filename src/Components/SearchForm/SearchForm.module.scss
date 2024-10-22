@@ -1,0 +1,141 @@
+@mixin button {
+    width: 165px;
+    text-align: center;
+    background-color: rgba(000, 000, 000, 50%);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: white;
+    padding: 5px 5px;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow:
+        0px 0px 7px 1px #1e4d94,
+        0px 0px 12px 3px #1e4d94;
+    transition: all 50ms ease-in-out;
+
+    &:hover {
+        cursor: url(/pointer.png), auto;
+        color: var(--card-box-shadow-color-hover);
+        box-shadow:
+            0px 0px 7px 1px #1e4d94,
+            0px 0px 12px 3px #a7a6a6;
+        text-shadow: 0px 0px 20px #000000;
+        backdrop-filter: blur(5px);
+    }
+    &:active {
+        background-color: var(--form-active-button-bgr-color);
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    width: 100%;
+    align-content: center;
+
+    label {
+        font-size: 1.8rem;
+        color: var(--form-label-color);
+        text-align: center;
+        text-shadow:
+            0px 1px 80px var(--text-color-shadow),
+            2px 3px 1px #000000,
+            0px 6px 1px #000000;
+        background-color: #00000096;
+        padding: 0.5rem;
+        border-radius: 10px;
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+        svg {
+            color: var(--about-text-collor);
+            font-size: 3rem;
+        }
+    }
+    .main-element {
+        display: flex;
+        gap: 1.2rem;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+
+        ::placeholder {
+            padding: 0.1rem;
+        }
+        .form-input {
+            width: clamp(250px, 100%, 505px);
+            font-size: 1.4rem;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            border-bottom: 1px solid var(--about-text-collor);
+            padding: 0.4rem;
+            backdrop-filter: blur(5px);
+            transition: box-shadow 200ms ease-in-out;
+
+            &:focus {
+                box-shadow: 0px 2px 18px 0px var(--card-box-shadow-color);
+                outline: none;
+            }
+
+            &:not(:focus-within) {
+                box-shadow: none;
+            }
+            &:invalid {
+                color: var(--form-input-bgr);
+                background-color: var(--form-input-invalid);
+            }
+            &:valid {
+                background-color: var(--form-input-valid);
+            }
+        }
+    }
+    input[type="submit"] {
+        @include button();
+    }
+}
+@media screen and (max-width: 767px) {
+    form {
+        padding: 1rem;
+        width: 100%;
+
+        label {
+            background-color: rgba(0, 0, 0, 0.5882352941);
+            font-size: 1.2rem;
+        }
+        span {
+            ::placeholder {
+                padding: 0.1rem;
+            }
+            svg {
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                z-index: 1;
+            }
+            input[type="text"] {
+                font-size: 1.1rem;
+                width: 100%;
+            }
+            input[type="submit"] {
+                width: 125px;
+                font-size: 1.1rem;
+                color: rgba(255, 255, 255, 100%);
+                padding: 5px;
+                font-weight: 600;
+                transition: all 50ms ease-in-out;
+
+                &:active {
+                    background-color: var(--form-active-button-bgr-color);
+                }
+            }
+        }
+    }
+}

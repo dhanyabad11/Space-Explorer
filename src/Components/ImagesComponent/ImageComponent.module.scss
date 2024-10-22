@@ -1,0 +1,110 @@
+.card-component {
+    background-color: var(--component-bgr-transparent-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+    overflow: hidden;
+    width: 375px;
+    max-width: 375px;
+    max-height: 400px;
+    transition: all 200ms ease-in-out;
+
+    img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0.8rem;
+
+        .card-content-title,
+        .card-content-description {
+            color: rgba($color: #ffffff, $alpha: 1);
+            padding: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-button {
+            position: relative;
+            display: flex;
+            width: 36px;
+            height: 36px;
+            padding: 0.4rem;
+            background: transparent;
+            border-radius: 8px;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+            transition: all 200ms ease-in-out;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                background: #498fbe5b;
+            }
+            &:active {
+                cursor: url("/pointer.png"), auto;
+                cursor: url(/pointer.png), auto;
+                box-shadow: inset 0px 0px 20px 0px #ffffff;
+            }
+            .share-copied {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 50%;
+                left: 115%;
+                width: 65px;
+                height: 30px;
+                color: #fff;
+                background-color: var(--card-box-shadow-collor-button-hover);
+                padding: 0.1rem;
+                border-radius: 0.3rem;
+                animation: copy 300ms;
+                -webkit-animation: copy 300ms;
+            }
+        }
+    }
+}
+.card-component:hover {
+    cursor: url("/pointer.png"), auto;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color-hover);
+}
+@media screen and (max-width: 767px) {
+    .card-component {
+        height: clamp(128px, 100vh, 160px);
+        width: 100%;
+        position: relative;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            background-color: #000;
+            width: 100%;
+            padding: 0.5rem;
+
+            .card-content-title,
+            .card-content-description {
+                color: var(--about-text-collor);
+                white-space: nowrap;
+                overflow: hidden;
+                padding: unset;
+                text-overflow: ellipsis;
+                text-shadow: 0px 1px 0px #ffffff91;
+            }
+        }
+    }
+}

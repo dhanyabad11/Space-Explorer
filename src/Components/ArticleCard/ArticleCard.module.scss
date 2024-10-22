@@ -1,0 +1,197 @@
+.article-card-wrapper {
+    width: 100%;
+    height: 400px;
+    background-color: #1e4d9600;
+    border-radius: 16px;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition: transform 200ms ease-in-out;
+
+    .article-card-li {
+        overflow: hidden;
+        height: 100% !important;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        padding: 0.8rem;
+        gap: 0.5rem;
+        background-color: var(--component-bgr-transparent-color);
+        border-radius: 10px;
+        width: 80%;
+
+        .article-img-title-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 33%;
+            height: 100%;
+            a {
+                width: 275px;
+                height: 250px;
+                .article-card-image {
+                    object-fit: cover;
+                    width: 275px;
+                    height: 250px;
+                    display: inline-block;
+                    border-radius: 10px;
+                    box-shadow: 1px 1px 4px 1px #ffffff47;
+                }
+                &:hover {
+                    cursor: url("/pointer.png"), auto;
+                }
+            }
+            .article-card-title {
+                width: 100%;
+                font-size: 1.3rem;
+                line-height: 1.2rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            p {
+                margin: 0;
+                font-family: inherit;
+                font-size: 1rem;
+                line-height: 1.5;
+                letter-spacing: 0.00938em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+                span {
+                    font-size: 1.25rem;
+                }
+            }
+            .article-card-button-container {
+                display: flex;
+                gap: 0.5rem;
+
+                .card-button {
+                    position: relative;
+                    display: flex;
+                    width: 36px;
+                    height: 36px;
+                    padding: 0.4rem;
+                    background: transparent;
+                    border-radius: 8px;
+                    border: none;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                    transition: all 200ms ease-in-out;
+                    &:hover {
+                        cursor: url("/pointer.png"), auto;
+                        background: #4990be96;
+                    }
+                    &:active {
+                        cursor: url("/pointer.png"), auto;
+                        box-shadow: inset 0px 0px 20px 0px #ffffff;
+                    }
+                    .share-copied {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 50%;
+                        left: 115%;
+                        width: 65px;
+                        height: 30px;
+                        color: #fff;
+                        background-color: var(--card-box-shadow-collor-button-hover);
+                        padding: 0.1rem;
+                        border-radius: 0.3rem;
+                        animation: copy 300ms;
+                        -webkit-animation: copy 300ms;
+                    }
+                    .facebook-share {
+                        height: 100%;
+                    }
+                }
+                .card-link {
+                    position: relative;
+                    display: flex;
+                    width: 100px;
+                    height: 36px;
+                    padding: 0.4rem;
+                    background: transparent;
+                    border-radius: 8px;
+                    border: none;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                    transition: all 200ms ease-in-out;
+                }
+            }
+        }
+        .article-card-text-container {
+            display: inline-block;
+            max-width: 66%;
+            max-height: 100%;
+            overflow-y: auto;
+            word-break: break-word;
+            padding: 1rem 0 1rem 0.6rem;
+
+            .article-card-text {
+                line-height: 1.5rem;
+                letter-spacing: 0.11rem;
+                font-size: 1.2rem;
+            }
+            scrollbar-width: 5px;
+            scrollbar-color: var(--card-box-shadow-color-hover) var(--card-box-shadow-collor-button-hover);
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: var(--card-box-shadow-color-hover);
+                border-radius: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: var(--card-box-shadow-collor-button-hover);
+            }
+        }
+    }
+    &:hover {
+        box-shadow: 999px 0px 40px 0px #56a8df, inset -20px 0px 100px -25px #56a8df,
+            -8px 1px 5px -3px #4990be96;
+    }
+}
+.card-main-container {
+    transition: all ease-in-out 200ms;
+    border: none;
+    border-radius: 4px;
+
+    .share-icon {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    .read-more {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    .header-link {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    &:hover {
+        box-shadow: 0px 6px 13px -2px #56a8df;
+    }
+}
+
+@keyframes copy {
+    0% {
+        display: flex;
+    }
+
+    100% {
+        display: none;
+    }
+}
