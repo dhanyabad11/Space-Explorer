@@ -34,10 +34,10 @@ export const AboutPage = () => {
                 </p>
                 <div className={styles["about-links-container"]}>
                     <p>Reach me</p>
-                    <Link to={"https://github.com/SpooRe91"} target="_blank" rel="noopener">
+                    <Link to={"https://github.com/dhanyabad11"} target="_blank" rel="noopener">
                         <GitHubIcon />
                     </Link>
-                    <Link to={"https://www.linkedin.com/in/mbogdanov9110/"} target="_blank" rel="noopener">
+                    <Link to={"https://www.linkedin.com/in/dhanyabad-behera-599631250/"} target="_blank" rel="noopener">
                         <LinkedInIcon />
                     </Link>
                 </div>
